@@ -15,7 +15,6 @@ export default function UpdateTodoForm({
   } = useForm();
 
   const onSubmit = (data) => {
-
     setDisplayOptions(false);
     setEditing(false);
     handleUpdateTodo(id, data);
@@ -23,17 +22,15 @@ export default function UpdateTodoForm({
 
   const { handleUpdateTodo } = useContext(TodoItemsContext);
 
-  const cancelEdit = (e)=>{
-    if(e.key === 'Escape'){
-        
-        setEditing(false);
-        setDisplayOptions(false);
+  const cancelEdit = (e) => {
+    if (e.key === "Escape") {
+      setEditing(false);
+      setDisplayOptions(false);
     }
-
-  }
+  };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} onKeyUp={(e)=>cancelEdit(e)}>
+      <form onSubmit={handleSubmit(onSubmit)} onKeyUp={(e) => cancelEdit(e)}>
         <input
           type="text"
           name="title"
@@ -42,7 +39,7 @@ export default function UpdateTodoForm({
             required: { value: true, message: "You cant leave an empty todo." },
           })}
           placeholder="Type a new title"
-          className="w-40 rounded focus:outline outline-offset-2 outline-2 outline-pasto"
+          className="w-40 rounded outline outline-offset-2 outline-2 outline-pasto"
         />
       </form>
     </>

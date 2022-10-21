@@ -9,7 +9,6 @@ export const TodoItemsProvider = ({children})=>{
     const [viewing, setViewing] = useState('all');
     const {items, handleClickCompleted, handleAddTodo, handleDeleteTodo, handleUpdateTodo} = useTodoItems();
 
-
     return(
         <>
         <TodoItemsContext.Provider value={{viewing, setViewing, items, handleClickCompleted, handleAddTodo, handleDeleteTodo, handleUpdateTodo}}>

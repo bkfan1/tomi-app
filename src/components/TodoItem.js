@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactTimeAgo from "react-time-ago";
 import { TodoItemsContext } from "../context/TodoItemsContext";
 import TodoItemActionsMenu from "./TodoItemActionsMenu";
@@ -6,10 +6,15 @@ import UpdateTodoForm from "./UpdateTodoForm";
 
 export default function TodoItem({ data }) {
   const { id, completed, title, createdAt } = data;
-  const { handleClickCompleted } = useContext(TodoItemsContext);
+  const { handleClickCompleted, viewing } = useContext(TodoItemsContext);
   const [editing, setEditing] = useState(false);
 
   const [displayOptions, setDisplayOptions] = useState(false);
+
+  useEffect(() => {
+    setEditing(false);
+    setDisplayOptions(false);
+  }, [viewing]);
 
   return (
     <>
